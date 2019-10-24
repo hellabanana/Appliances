@@ -1,6 +1,4 @@
-using System;
-
-namespace Appliances.Models
+namespace Appliances.ViewModel
 {
     public class ErrorViewModel
     {

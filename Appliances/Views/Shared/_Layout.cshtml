@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no" />
     <title>@ViewData["Title"] - Appliances</title>
 
     <environment include="Development">
@@ -13,31 +13,59 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/signin.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Appliances</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+
+
+                <div class="collapse navbar-collapse id=" navbarSupportedContent"">
+
+                    <ul class="navbar-nav mr-auto ">
+                        <li class="nav-item active">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Categories</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Other</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Purchares</a>
+                        </li>
+
+
+
                     </ul>
+
                 </div>
-            </div>
-        </nav>
+                <form class="form-inline pull-xs-right">
+                    <input class="form-control" placeholder="Search" type="text" />
+                    <button class=" btn btn-outline-success" type="submit">Search</button>
+
+                </form>
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                }
+                else
+                {
+                    <a class="nav-link text-dark">Привет,@User.Identity.Name</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Exit">Log out</a>
+
+                }
+
+
+            </nav>
+        </div>
     </header>
     <div class="container">
         <partial name="_CookieConsentPartial" />
@@ -48,7 +76,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2019 - Appliances - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2019 - Appliances - <a asp-area="" asp-controller="" asp-action="">Privacy</a>
         </div>
     </footer>
 

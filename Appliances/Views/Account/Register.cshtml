@@ -1,0 +1,40 @@
+﻿@model Appliances.ViewModel.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+    <form asp-action="Register" asp-controller="Account" asp-anti-forgery="true" class="form-signin">
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <div class="container ">
+
+            <h1 class="text-center">Registration</h1>
+            <label asp-for="Email" class="sr-only">Email address</label>
+            <input type="email" asp-for="Email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <span asp-validation-for="Email" />
+
+
+
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" asp-for="Password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <span asp-validation-for="Password" />
+
+
+            <label for="inputPassword1" class="sr-only">Confirm password</label>
+            <input type="password" asp-for="ConfirmPassword" id="inputPassword1" class="form-control" placeholder="Confirm password" required>
+            <span asp-validation-for="ConfirmPassword" />
+
+
+            <button class=" btn btn-lg btn-block btn-outline-success" type="submit">Register</button>
+
+
+
+
+        </div>
+           
+          
+
+        
+    </form>
+
+
