@@ -30,38 +30,8 @@
                 }
             </div>
         </div>
-
-
-        @*<table class="table-borderless  table-striped">
-
-
-                <tbody>
-
-                    @foreach (var item in Model)
-                    {
-
-                        <tr>
-                            <td>@item.Name<img src="@item.Image" width="300" height="300" alt="" /></td>
-                            <td>@item.Price</td>
-
-                            <td>
-                                <button type="button" class="btn btn-success" aria-label="Left Align">
-                                    Add to Cart
-                                </button>
-                            </td>
-
-
-                        </tr>
-
-                    }
-
-                </tbody>
-            </table>*@
-
-
-
     </div>
 </div>
-@*<div page-model="@Model.Paginglnfo" page-action="ViewProduct"></div>*@
+<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn" page-class-normal="btn-secondary" page-class-selected="btn-primary" class="btn-group pull-right m-1"> </div>
 
 

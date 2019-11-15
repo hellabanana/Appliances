@@ -1,29 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Appliances.Models;
 using Appliances.ViewModel;
+using System.Linq;
 
 namespace Appliances.Controllers
 {
     public class HomeController : Controller
     {
         private IProduct repository;
-
+        public int PageSize = 4;
         public   HomeController(IProduct product)
         {
             repository = product;
         }
 
-        public IActionResult Index()
+        public ViewResult Index(string Category,int ProductPage = 1) => View(new ProductListViewModel
         {
-            return View(repository.Products);
-        }
+            Products = repository.Products
+               .Where(p => Category == null || p.Category == Category)
+              .OrderBy(p => p.Id)
+              .Skip((ProductPage - 1) * PageSize)
+              .Take(PageSize),
+            PagingInfo = new PagingInfo { CurrentPage = ProductPage, ItemsPerPage = PageSize, Totalitems = repository.Products.Count() }
+        });
 
-      
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

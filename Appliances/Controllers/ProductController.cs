@@ -1,5 +1,6 @@
 ﻿using Appliances.Models;
 using Appliances.ViewModel;
+using Appliances.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -20,7 +21,7 @@ namespace Appliances.Controllers
             .OrderBy(p => p.Id)
             .Skip((ProductPage - 1) * PageSize)
             .Take(PageSize),
-            Paginglnfo = new PagingInfo { CurrentPage = ProductPage, ItemsPerPage = PageSize, Totalitems = repository.Products.Count() }
+            PagingInfo = new PagingInfo { CurrentPage = ProductPage, ItemsPerPage = PageSize, Totalitems = repository.Products.Count() }
         });
 
 
