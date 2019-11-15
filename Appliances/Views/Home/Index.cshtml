@@ -1,8 +1,66 @@
-﻿@{
+﻿@model IEnumerable<Product>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+   
+    <div class="container">
+        <div class=" row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                @foreach (var k in Model)
+                {
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="@k.Image" class="card-img" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">@k.Name</h5>
+                                    <p class="card-text">@k.Description</p>
+                                    <p class="card-text">@k.Price</p>
+                                    <button class="btn btn-success">Add to Car</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                }
+            </div>
+        </div>
+
+
+        @*<table class="table-borderless  table-striped">
+
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>@item.Name<img src="@item.Image" width="300" height="300" alt="" /></td>
+                        <td>@item.Price</td>
+
+                        <td>
+                            <button type="button" class="btn btn-success" aria-label="Left Align">
+                                Add to Cart
+                            </button>
+                        </td>
+
+
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>*@
+
+
+
+    </div>
+        </div>
+
+  

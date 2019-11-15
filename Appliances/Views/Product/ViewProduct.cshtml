@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "ViewProduct";
+    Layout = null;
+}
+ @await Html.PartialAsync("_AdminMain")
+
+    <div class="container">
+        <table class="table  table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td><img src="@item.Image" width="150" height="150" alt="" /></td>
+                    <td>
+                        <button type="button" class="btn btn-danger" aria-label="Left Align">
+                          Remove
+                        </button>
+                    </td>
+
+
+                </tr>
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+
