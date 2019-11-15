@@ -22,7 +22,13 @@ namespace Appliances.Controllers
               .OrderBy(p => p.Id)
               .Skip((ProductPage - 1) * PageSize)
               .Take(PageSize),
-            PagingInfo = new PagingInfo { CurrentPage = ProductPage, ItemsPerPage = PageSize, Totalitems = repository.Products.Count() }
+            PagingInfo = new PagingInfo {
+                CurrentPage = ProductPage, ItemsPerPage = PageSize, 
+                Totalitems = Category==null ? 
+                repository.Products.Count(): 
+                repository.Products.Where(e=>e.Category==Category).Count() 
+            }
+            ,CurrentCategory=Category
         });
 
 

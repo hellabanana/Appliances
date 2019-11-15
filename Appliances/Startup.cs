@@ -62,14 +62,31 @@ namespace Appliances
 
             app.UseMvc(routes =>
             { 
+            
+                routes.MapRoute(name: null, 
+                    template: "{Category}/Page{productPage:int}"
+                    , defaults: new { controller = "Home", action = "Index" } );
+           
+            routes.MapRoute(name: null, 
+                template: "Page{productPage:int}"
+                , defaults: new { controller = "Home",
+                 action = "Index", productPage = 1 } ) ;
+          
+            routes.MapRoute(name: null,
+           template:" {Category}" , defaults: new
+            {controller = "Home",action ="Index",productPage = 1});
+
+            routes.MapRoute(name: null,
+         template: "", defaults: new
+         { controller = "Home", action = "Index", productPage = 1 }) ;
+
             routes.MapRoute(
-                name: "pagination", 
-                template: "Products/Page{productPage}",
-                defaults: new {Controller = "Home", action = "Index" });
-            routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    name: null,
+                    template: "",
+                    defaults:new {controller="Home",action="Index",productPage=1 });
+                routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
             });
+         
           // SeedData.EnsurePopulated(app);
         }
     }
