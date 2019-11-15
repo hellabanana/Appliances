@@ -1,23 +1,30 @@
 ﻿using Appliances.Models;
+using Appliances.ViewModel;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Appliances.Controllers
 {
     public class ProductController:Controller
     {
         private IProduct repository;
+        public int PageSize = 4;
         public ProductController(IProduct repos)
         {
             repository = repos;
         }
 
-        public IActionResult ViewProduct() => View(repository.Products);
+        public ViewResult ViewProduct(int ProductPage = 1) => View(new ProductListViewModel
+        {
+            Products = repository.Products
+            .OrderBy(p => p.Id)
+            .Skip((ProductPage - 1) * PageSize)
+            .Take(PageSize),
+            Paginglnfo = new PagingInfo { CurrentPage = ProductPage, ItemsPerPage = PageSize, Totalitems = repository.Products.Count() }
+        });
 
-              
+
+
 
     }
 }

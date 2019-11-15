@@ -12,10 +12,12 @@ namespace Appliances.Controllers
     public class HomeController : Controller
     {
         private IProduct repository;
-     public   HomeController(IProduct product)
+
+        public   HomeController(IProduct product)
         {
             repository = product;
         }
+
         public IActionResult Index()
         {
             return View(repository.Products);

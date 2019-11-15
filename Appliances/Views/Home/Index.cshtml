@@ -1,15 +1,15 @@
-﻿@model IEnumerable<Product>
+﻿@model ProductListViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-   
+
     <div class="container">
         <div class=" row">
             <div class="col-md-2"></div>
             <div class="col-md-10">
-                @foreach (var k in Model)
+                @foreach (var k in Model.Products)
                 {
                     <div class="card mb-3">
                         <div class="row no-gutters">
@@ -35,32 +35,33 @@
         @*<table class="table-borderless  table-striped">
 
 
-            <tbody>
+                <tbody>
 
-                @foreach (var item in Model)
-                {
+                    @foreach (var item in Model)
+                    {
 
-                    <tr>
-                        <td>@item.Name<img src="@item.Image" width="300" height="300" alt="" /></td>
-                        <td>@item.Price</td>
+                        <tr>
+                            <td>@item.Name<img src="@item.Image" width="300" height="300" alt="" /></td>
+                            <td>@item.Price</td>
 
-                        <td>
-                            <button type="button" class="btn btn-success" aria-label="Left Align">
-                                Add to Cart
-                            </button>
-                        </td>
+                            <td>
+                                <button type="button" class="btn btn-success" aria-label="Left Align">
+                                    Add to Cart
+                                </button>
+                            </td>
 
 
-                    </tr>
+                        </tr>
 
-                }
+                    }
 
-            </tbody>
-        </table>*@
+                </tbody>
+            </table>*@
 
 
 
     </div>
-        </div>
+</div>
+@*<div page-model="@Model.Paginglnfo" page-action="ViewProduct"></div>*@
 
-  
+
