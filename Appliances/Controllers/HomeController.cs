@@ -18,7 +18,7 @@ namespace Appliances.Controllers
         public ViewResult Index(string Category,int ProductPage = 1) => View(new ProductListViewModel
         {
             Products = repository.Products
-               .Where(p => Category == null || p.Category == Category)
+              .Where(p => Category == null || p.Category == Category)
               .OrderBy(p => p.Id)
               .Skip((ProductPage - 1) * PageSize)
               .Take(PageSize),
