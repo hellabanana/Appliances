@@ -17,11 +17,8 @@
                     <p class="card-text">@Model.Price</p>
                     <form id="@Model.Id" asp-action="AddToCart" asp-controller="Cart" method="post">
                         <input type="hidden" asp-for="Id" />
-                        <input type="hidden" name="returnUrl"
-                               value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                        <input type="hidden"  name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
                         <button type="submit" class="btn btn-success">Add to Cart</button>
-
-
                     </form>
                  
                 </div>

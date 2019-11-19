@@ -27,20 +27,17 @@
                     <ul class="navbar-nav mr-auto ">
                         <li class="nav-item active">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Categories</a>
-                        </li>
+                        </li>                 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Other</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Purchares</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Cart</a>
                         </li>
                     </ul>
                 </div>
                 <form class="form-inline pull-xs-right">
-                    <input class="form-control" placeholder="Search" type="text" />
+                    <input class="form-control"  type="text" />
                     <button class=" btn btn-outline-success" type="submit">Search</button>
                 </form>
                 @if (!User.Identity.IsAuthenticated)

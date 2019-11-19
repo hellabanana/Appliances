@@ -30,6 +30,9 @@ namespace Appliances
             string connection = "Server=(localdb)\\mssqllocaldb;Database=UsersRoles;Trusted_Connection=True;";
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
             services.AddTransient<IProduct, EFProductRepository>();
+            services.AddScoped(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IOrderRepository, EFOrderRepository>();
 
             _ = services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
@@ -37,11 +40,10 @@ namespace Appliances
                     options.LoginPath = new PathString("/Account/Login");
                     options.AccessDeniedPath = new PathString("/Account/Login");
                 });
+      
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddMemoryCache();
             services.AddSession();
-
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
   
@@ -61,7 +63,7 @@ namespace Appliances
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
-
+            app.UseSession();
             app.UseMvc(routes =>
             { 
             
