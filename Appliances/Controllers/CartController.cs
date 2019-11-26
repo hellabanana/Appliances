@@ -29,22 +29,23 @@ namespace Appliances.Controllers
             });
         }
 
-        public RedirectToActionResult AddToCart(int productId, string returnUrl)
+        public RedirectToActionResult AddToCart(int Id, string returnUrl)
         {
             Product product = repository.Products
-                .FirstOrDefault(p => p.Id == productId);
+                .FirstOrDefault(p => p.Id == Id);
             if (product != null)
             {
                 cart.AddItem(product, 1);
+                
             }
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToActionResult RemoveFromCart(int productId,
+        public RedirectToActionResult RemoveFromCart(int Id,
                 string returnUrl)
         {
             Product product = repository.Products
-                .FirstOrDefault(p => p.Id == productId);
+                .FirstOrDefault(p => p.Id == Id);
 
             if (product != null)
             {
