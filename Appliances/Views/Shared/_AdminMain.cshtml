@@ -17,16 +17,52 @@
           crossorigin="anonymous"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
 </environment>
+<script src="https://kit.fontawesome.com/04b2d2ca39.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="~/css/AdminLeftMenu.css" media="all" />
 
 
-<div class="sidenav">
+@*<div class="side">
     <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
-    <a class="nav-link" asp-controller="Product" asp-action="ViewProduct">View products</a>
-    <a class="nav-link" asp-controller="Admin" asp-action="ProductAdd">Product add</a>
-    <a class="nav-link" asp-controller="" asp-action="">Category add</a>
-    <a href="#">Contact</a>
+    <a class="nav-link" asp-controller="Admin" asp-action="Index">View products</a>
+    <a class="nav-link" asp-controller="Order" asp-action="List">Orders</a>
+    <a class="nav-link" asp-controller="Admin" asp-action="Create">New product</a>
+</div>*@
+
+
+
+<div class="sidebar-container">
+    <div class="sidebar-logo">
+       Appliances
+    </div>
+    <ul class="sidebar-navigation">
+        <li class="header">Navigation</li>
+        <li>
+            <a asp-controller="Home" asp-action="Index">
+                <i class="fas fa-home" aria-hidden="true"></i> Homepage
+            </a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Index">
+                <i class="fas fa-database" aria-hidden="true"></i>  Products
+            </a>
+        </li>
+        <li class="header"> Menu</li>
+        <li>
+            <a asp-controller="Order" asp-action="List">
+                <i class="fas fa-users" aria-hidden="true"></i> Orders
+            </a>
+        </li>
+        <li>
+            <a asp-controller="Admin" asp-action="Create">
+                <i class="fas fa-plus" aria-hidden="true"></i> New product
+            </a>
+        </li>
+       
+    </ul>
 </div>
+
+
+
 
 
 <environment include="Development">

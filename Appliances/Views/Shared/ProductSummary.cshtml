@@ -5,10 +5,10 @@
 }
 
 
-    <div class="card mb-3">
+@*<div class="card mb-3">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="@Model.Image" class="card-img" alt="...">
+                <img src="@Model.Image" width="125" height="300" class="card-img" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -20,9 +20,46 @@
                         <input type="hidden"  name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
                         <button type="submit" class="btn btn-success">Add to Cart</button>
                     </form>
-                 
+
                 </div>
             </div>
         </div>
+    </div>*@
+
+
+<div class="col-md-3 col-sm-6">
+    <div class="product-grid2">
+        <div class="product-image2">
+            <a href="#">
+                <img class="pic-1" style="width:160px; height:210px;" src="@Model.Image">
+                <img class="pic-2"  style="width:160px; height:210px;"src="@Model.Image">
+
+            </a>
+            <ul class="social">
+                <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
+                <li>
+                    <form id="@Model.Id" asp-action="AddToCart" asp-controller="Cart" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                        <button href="#" type="submit" role="button" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></button>
+
+                    </form>
+                </li>
+            </ul>
+            <form id="@Model.Id" asp-action="AddToCart" asp-controller="Cart" method="post">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+            <button href="#" class="add-to-cart" type="submit" role="button" data-tip="Add to Cart">Add to cart</button>
+
+            </form>
+        </div>
+        <div class="product-content">
+            <h3 class="title"><a href="#">@Model.Name</a></h3>
+            <span class="price">@Model.Price</span>
+        </div>
     </div>
+    </div>
+
+
+
 

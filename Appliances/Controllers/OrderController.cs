@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Appliances.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Appliances.Controllers
@@ -44,5 +45,20 @@ namespace Appliances.Controllers
             cart.Clear();
             return View();
         }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult MarkShipped (int orderID)
+        {
+            Order order = repository.Orders.FirstOrDefault(o => o.OrderID == orderID);
+            if (order != null)
+            {
+                order.Shipped = true;
+                repository.SaveOrder(order);
+            }
+            return RedirectToAction(nameof(List));
+        }
+        [Authorize]
+        public ViewResult List() => View(repository.Orders.Where(o => !o.Shipped));
     }
 }

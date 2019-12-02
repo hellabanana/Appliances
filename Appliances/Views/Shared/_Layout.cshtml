@@ -17,6 +17,9 @@
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/signin.css" />
+    <script src="https://kit.fontawesome.com/04b2d2ca39.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/ProductSummary.css"/>
+    <link rel="stylesheet" asp-href-include="bower_components/Font-Awesome/css/all.min.css" />
 </head>
 <body>
     <header>
@@ -32,7 +35,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Other</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Cart</a>
+                            @await Component.InvokeAsync("CartSummary")
                         </li>
                     </ul>
                 </div>
@@ -47,7 +50,7 @@
                 else
                 {
                     <a class="nav-link text-dark">Привет,@User.Identity.Name</a>
-                    @if (User.IsInRole("admin")) {<a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Main">Admin</a> }
+                    @if (User.IsInRole("admin")) {<a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a> }
                     <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Exit">Log out</a>
 
                 }

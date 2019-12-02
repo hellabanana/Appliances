@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Appliances.Infrastructure;
+﻿using System.Linq;
 using Appliances.Models;
 using Appliances.ViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -41,8 +37,7 @@ namespace Appliances.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToActionResult RemoveFromCart(int Id,
-                string returnUrl)
+        public RedirectToActionResult RemoveFromCart(int Id, string returnUrl)
         {
             Product product = repository.Products
                 .FirstOrDefault(p => p.Id == Id);

@@ -11,13 +11,25 @@
                 @await Component.InvokeAsync("NavigationMenu")
             </div>
             <div class="col-md-10">
-                @foreach (var k in Model.Products)
-                {
+@{ 
+    int x = 1;
 
-                    @await Html.PartialAsync("ProductSummary", k)
-                    <br />
-                }
-            </div>
+}
+                
+    
+     
+                    @foreach (var k in Model.Products)
+                    {
+                    if (x == 1) {
+                        @Html.CreateList1();
+                            };
+    @await Html.PartialAsync("ProductSummary", k)
+                        if (x == 3) {@Html.CreateList2();x = 0; }
+
+                        x++;
+                    }
+
+</div>
         </div>
     </div>
 </div>

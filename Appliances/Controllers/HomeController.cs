@@ -9,7 +9,7 @@ namespace Appliances.Controllers
     public class HomeController : Controller
     {
         private IProduct repository;
-        public int PageSize = 4;
+        public int PageSize = 12;
         public   HomeController(IProduct product)
         {
             repository = product;
